@@ -31,13 +31,13 @@ let helloworld="hello world"
 ```
 * TypeScript knows that helloWorld is a string
 * TypeScript can build a type-system that accepts JavaScript code but has types. 
-# OBETCT
+# OBJECT
 * The fundamental way that we group and pass around data is through objects. In TypeScript, we represent those through object types
-
-ts
+```js
 function greet(person: { name: string; age: number }) {
   return "Hello " + person.name;
 }
+```
 ## ARRAY TYPE
 * A TypeScript array is an ordered list of data. To declare an array that holds values of a specific type, we use syntax:
 ts
@@ -45,33 +45,35 @@ let skill = skills[0];
 console.log(typeof(skill));
 
 Array properties and methods
-* TypeScript arrays can access the properties and methods of a JavaScript. For example,  the length property to get the number of element in an array:
-ts
+* TypeScript arrays can access the properties and methods of a JavaScript. For example,  the length property to get the number of element in an array
+```js
 let series = [1, 2, 3];
 console.log(series.length); // 3
+```
 ## Tuples
 * Array consists of values of homogeneous (same) types but sometimes when we need to store a collection of a different types values in a single variable, then we will go with Tuples.
-ts
+```js
 Syntax:
 let tuple_name = [val1, val2, val3, ...val n];  
-
+```
 Example:
+```
 let arrTuple = [501, "welcome", 505, "Mohan"];  
 console.log(arrTuple);
-
+```
 ## Enums
 * Enums are one of the few features TypeScript has which is not a type-level extension of JavaScript.
 * Enums allow a developer to define a set of named constants. 
 * Using enums can make it easier to document intent, or create a set of distinct cases. TypeScript provides both numeric and string-based enums.
 Numeric enum
-ts
+```js
 enum Direction {
   Up = 1,
   Down,
   Left,
   Right,
 }
-
+```
 String enum
 * In a string enum, each member has to be constant-initialized with a string literal, or with another string enum member.
 ts
