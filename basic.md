@@ -76,13 +76,14 @@ enum Direction {
 ```
 String enum
 * In a string enum, each member has to be constant-initialized with a string literal, or with another string enum member.
-ts
+```javascript
 enum Direction {
   Up = "UP",
   Down = "DOWN",
   Left = "LEFT",
   Right = "RIGHT",
 }
+```
 ### The any Type:
 TypeScript any type allows you to store a value of any type.
 ##### Why we use any  in TypeScript:
