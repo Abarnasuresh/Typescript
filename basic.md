@@ -109,6 +109,91 @@ TypeScript also has numeric literal types, which act the same as the string lite
 Typescript also has boolean literal types you might use these to constrain object values whose properties ar interrelated.
 <!-- ### Function Type and call backs:
 A callback function is defined as a function passed into another function as an argument -->
+## Type aliases
+* We’ve been using object types and union types by writing them directly in type annotations. 
+* This is convenient, but it’s common to want to use the same type more than once and refer to it by a single name.
+```javascript
+type Point = {
+  x: number;
+  y: number;
+};
+ 
+// Exactly the same as the earlier example
+function printCoord(pt: Point) {
+  console.log("The coordinate's x value is " + pt.x);
+  console.log("The coordinate's y value is " + pt.y);
+}
+ 
+printCoord({ x: 100, y: 100 });
+```
+## Function return types and void 
+* The simplest way to describe a function is with a function type expression. These types are syntactically similar to arrow functions:
+```javascript
+function greeter(fn: (a: string) => void) {
+  fn("Hello, World");
+}
+function printToConsole(s: string) {
+  console.log(s);
+}
+greeter(printToConsole
+```
+## Return type void
+* The void return type for functions can produce some unusual, but expected behavior.
+```javascript
+type voidFunc = () => void;
+ 
+const f1: voidFunc = () => {
+  return true;
+};
+ 
+const f2: voidFunc = () => true;
+ 
+const f3: voidFunc = function () {
+  return true;
+};
+```
+## Callbacks
+* A callback function is defined as a function passed into another function as an argument, which is then invoked inside the outer function to complete the desirable routine or action.
+ts
+function outerFunction(callback: () => void) {
+  callback();
+}
+
+## The Unknown Type
+* any and unknown are the same in terms of what is assignable to them, different in that unknown is not assignable to anything except any.
+* Just like all types are assignable to any, all types are assignable to unknown. 
+* This makes unknown another top type of TypeScript's type system (the other one being any).
+```javascript
+let value: unknown;
+value = true; // OK
+value = 42; // OK
+value = "Hello World"; // OK
+value = []; // OK
+value = {}; // OK
+value = Math.random; // OK
+value = null; // OK
+value = undefined;
+value = new TypeError(); 
+value = Symbol("type"); 
+```
+## The never Type
+* When narrowing, you can reduce the options of a union to a point where you have removed all possibilities and have nothing left. 
+* In those cases, TypeScript will use a never type to represent a state which shouldn’t exist.
+* The never type is assignable to every type; however, no type is assignable to never (except never itself). 
+* This means you can use narrowing and rely on never turning up to do exhaustive checking in a switch statement.
+
+ts
+type Shape = Circle | Square;
+function getArea(shape: Shape) {
+  switch (shape.kind) {
+    case "circle":
+      return Math.PI * shape.radius ** 2;
+    case "square":
+      return shape.sideLength ** 2;
+    default:
+      const _exhaustiveCheck: never = shape;
+      return _exhaustiveCheck;
+  }
 ### Include and Exclude Files:
 The "include" property allows you to include a list of TypeScript files using the glob wildcards pattern. The "exclude" property allows you to exclude a list of TypeScript files using the glob wildcards pattern.
 ```javascript
@@ -140,5 +225,5 @@ const getAPI = async (url: string) => {
   return {};
 };
 ```
-
+### Debugging with Visual Studio Code:
 TypeScript debugging supports JavaScript source maps. To generate source maps for your TypeScript files, compile with the --sourcemap option or set the sourceMap property in the tsconfig.json file to true.
