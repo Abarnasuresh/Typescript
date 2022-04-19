@@ -1,4 +1,4 @@
-## Typescript           
+## Typescript         
 * Typescript is an open source language developed and maintained by the microsoft
 * Typescript is the superset of the javascript
 * Adding new features and advantages to javascript
@@ -6,14 +6,14 @@
 * Typescript code compiled to javascript code
 * TypeScript is a programming language but also it is a tool.
 * TypeScript helps to prevent some errors during development
-### Key Difference:
+### Key Difference: 
 There are one key different between TypeScript and JavaScript is
 * JavaScript uses ‘dynamic type’(resolved at runtime)
 * TypeScript uses ‘static type’(set during development).
-### CORE TYPES:
+### CORE TYPES: 
 Typescript enables us to write our own types which javascript already knows and ts all the supports.
 One of the core type we work with bot ts and js is Number.
-### NUMBER:
+### NUMBER: 
 * There is no special type for integers,floats ,numbers with or without decimal are all considered as Number type.
 * Other programming languages have special integer type,float type but both js and ts doesn’t have it. 
 ### STRING:
@@ -107,5 +107,38 @@ In practice string literal types combine nicely with union types, type guards, a
 TypeScript also has numeric literal types, which act the same as the string literals
 ### Boolean Literal Types:
 Typescript also has boolean literal types you might use these to constrain object values whose properties ar interrelated.
-### Function Type and call backs:
-A callback function is defined as a function passed into another function as an argument
+<!-- ### Function Type and call backs:
+A callback function is defined as a function passed into another function as an argument -->
+### Include and Exclude Files:
+The "include" property allows you to include a list of TypeScript files using the glob wildcards pattern. The "exclude" property allows you to exclude a list of TypeScript files using the glob wildcards pattern.
+```javascript
+"include": ["node_modules/dashboard/**/*.ts"],
+  "exclude": ["node_modules/dashboard/**/*.spec.ts"],
+```
+### Setting a Compilation Target:
+TypeScript supports compiling a whole project at once by including the tsconfig. json file in the root directory.
+### Source maps in typescript:
+* Source maps enable us to debug TypeScript code. 
+* A source map file maps from the transpiled JavaScript file to the original TypeScript file. 
+```javascript
+{
+  "compilerOptions": {
+    ...
+    "sourceMap": true
+  },
+  ...
+}
+```
+### Rootdir and Outdir:
+* rootDir is the path to the folder with the source code of the app 
+* OutDir is the path to the folder with compiled JavaScript files that will be executed by Node or Web browser 
+### noemit on Error:
+The noEmit option tells TypeScript that we only want to run type checking and do not want the compiler to output any transpiled code.
+```javascript
+const getAPI = async (url: string) => {
+  // Get API
+  return {};
+};
+```
+
+TypeScript debugging supports JavaScript source maps. To generate source maps for your TypeScript files, compile with the --sourcemap option or set the sourceMap property in the tsconfig.json file to true.
